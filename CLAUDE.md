@@ -17,6 +17,8 @@ A flight and travel inspired timelapse study focus application.
 - Layover: going over the estimate → land on time, then explore the city — one postcard every 15 min of overtime
 - Real mode: 800 km/hour (~13.3 km per focus minute) · Compressed: 10× real (~133 km per focus minute)
 - Pausing (holding pattern): no limit
+- Destination suggestions: favor famous / large airports over obscure ones (to build in milestone 3)
+- Airport data: OurAirports (public domain), filtered by `scripts/build_airports.py` into `Layover/Resources/airports.json`
 
 ## Style
 - Realistic night-cockpit theme (see the mockups)
