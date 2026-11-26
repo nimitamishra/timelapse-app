@@ -1,0 +1,19 @@
+[
+  "ATL", "LAX", "ORD", "DFW", "DEN", "JFK", "SFO", "SEA", "LAS", "MCO",
+  "MIA", "BOS", "IAH", "PHX", "MSP", "DTW", "PHL", "CLT", "SAN", "AUS",
+  "BNA", "HNL", "OGG", "ANC", "SLC", "PDX", "MSY", "DCA", "IAD",
+  "YYZ", "YVR", "YUL", "YYC",
+  "MEX", "CUN", "SJD", "GDL", "PVR",
+  "SJU", "NAS", "MBJ", "PUJ", "HAV", "AUA", "SXM", "PTY", "SJO", "LIR", "BZE",
+  "BOG", "MDE", "CTG", "LIM", "CUZ", "SCL", "EZE", "GRU", "GIG", "UIO", "MVD",
+  "LHR", "CDG", "AMS", "FRA", "MUC", "MAD", "BCN", "LIS", "OPO", "FCO",
+  "MXP", "VCE", "ZRH", "GVA", "VIE", "PRG", "BUD", "WAW", "CPH", "ARN",
+  "OSL", "HEL", "KEF", "DUB", "EDI", "MAN", "ATH", "IST", "BER", "BRU",
+  "NCE", "NAP",
+  "DXB", "AUH", "DOH", "TLV", "AMM", "CAI", "RAK", "CMN",
+  "JNB", "CPT", "NBO", "ADD", "LOS", "ACC", "MRU", "SEZ",
+  "HND", "NRT", "KIX", "ICN", "PEK", "PVG", "HKG", "TPE", "SIN", "BKK",
+  "HKT", "DPS", "KUL", "CGK", "MNL", "SGN", "HAN",
+  "DEL", "BOM", "BLR", "MAA", "CCU", "HYD", "COK", "GOI", "KTM", "CMB", "MLE",
+  "SYD", "MEL", "BNE", "PER", "AKL", "CHC", "ZQN", "NAN", "PPT"
+]

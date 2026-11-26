@@ -6,12 +6,16 @@ import SwiftUI
 
 /// Amber, filled — the main action on a screen ("Board flight").
 struct PrimaryButtonStyle: ButtonStyle {
+    // Reads `.disabled(true)` from the button, so a disabled button looks dimmed.
+    @Environment(\.isEnabled) private var isEnabled
+
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .font(.headline)
             .foregroundStyle(Theme.Colors.background)
             .frame(maxWidth: .infinity, minHeight: 54)
             .background(Theme.Colors.amber, in: .rect(cornerRadius: Theme.Radius.button))
+            .opacity(isEnabled ? 1 : 0.4)
             .pressEffect(configuration.isPressed)
     }
 }
