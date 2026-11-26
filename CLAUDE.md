@@ -20,3 +20,5 @@ A flight and travel inspired timelapse study focus application.
 
 ## Style
 - Realistic night-cockpit theme (see the mockups)
+- Fonts: Apple's built-in SF Pro (text) and SF Mono (flight data, timers) — no downloaded fonts
+- All colors, fonts and spacing come from `Layover/DesignSystem/Theme.swift` — never hard-code them in screens
