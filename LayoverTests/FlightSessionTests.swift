@@ -80,6 +80,15 @@ struct FlightSessionTests {
         #expect(flight.postcards(at: at(80)) == 2)
     }
 
+    @Test func planePointsTowardBogota() {
+        let flight = newFlight()
+        // Bogotá is south-east of San Francisco.
+        for minutes in [0.0, 22.5, 45, 80] {
+            let heading = flight.heading(at: at(minutes))
+            #expect(heading > 90 && heading < 180, "\(minutes) min: \(heading)°")
+        }
+    }
+
     @Test func planeStartsAtTheOrigin() {
         let flight = newFlight()
         let sfo = FlightTestSupport.store.airport(code: "SFO")!

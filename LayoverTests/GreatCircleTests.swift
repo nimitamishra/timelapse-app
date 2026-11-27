@@ -49,4 +49,36 @@ struct GreatCircleTests {
         #expect(mid.latitude > lhr.latitude)
         #expect(mid.latitude > jfk.latitude)
     }
+
+    // MARK: Heading
+
+    // Straight up and down a line of longitude, or along the equator: easy answers.
+    @Test(arguments: [
+        (Coordinate(latitude: 10, longitude: 0), 0.0),     // north
+        (Coordinate(latitude: 0, longitude: 10), 90.0),    // east
+        (Coordinate(latitude: -10, longitude: 0), 180.0),  // south
+        (Coordinate(latitude: 0, longitude: -10), 270.0),  // west
+    ])
+    func compassPoints(to target: Coordinate, expected: Double) {
+        let origin = Coordinate(latitude: 0, longitude: 0)
+        #expect(abs(GreatCircle.initialBearing(from: origin, to: target) - expected) < 0.001)
+    }
+
+    // Published initial course New York → London is about 51°: northeast, not due east.
+    @Test func newYorkToLondonSetsOffNortheast() {
+        #expect(abs(GreatCircle.initialBearing(from: jfk, to: lhr) - 51) < 2)
+    }
+
+    // ...and the plane arrives pointing southeast-ish, because the route curves.
+    @Test func headingTurnsAlongTheRoute() {
+        let nearLondon = GreatCircle.intermediatePoint(from: jfk, to: lhr, fraction: 0.99)
+        #expect(GreatCircle.initialBearing(from: nearLondon, to: lhr) > 100)
+    }
+
+    // Crossing the date line (Tokyo → SFO) must still point east, not swing round west.
+    @Test func crossingTheDateLineStillHeadsEast() {
+        let tokyo = Coordinate(latitude: 35.55, longitude: 139.78)
+        let heading = GreatCircle.initialBearing(from: tokyo, to: sfo)
+        #expect(heading > 0 && heading < 90)
+    }
 }

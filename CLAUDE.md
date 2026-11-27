@@ -31,3 +31,11 @@ A flight and travel inspired timelapse study focus application.
 - Realistic night-cockpit theme (see the mockups)
 - Fonts: Apple's built-in SF Pro (text) and SF Mono (flight data, timers) — no downloaded fonts
 - All colors, fonts and spacing come from `Layover/DesignSystem/Theme.swift` — never hard-code them in screens
+
+## Cockpit layout (decided in milestone 5)
+- Map: Apple MapKit, dark muted style; route drawn as a great-circle arc (solid = flown, dashed = still to go), plane icon points the way it's flying
+- Map camera: shows the whole route by default; tap the map to zoom in and follow the plane, tap again to zoom back out
+- Self view (your camera) is a toggle in the cockpit, **on** by default when a flight starts
+  - Self view on: your video fills the screen, fully visible, with the timer; a second toggle adds or hides the map on top
+  - Self view off: map on the top ~40% of the screen, timers and readouts below
+- Saved timelapse: footage is recorded clean; on the landing screen you choose "with flight overlay" or "clean" before saving

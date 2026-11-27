@@ -51,7 +51,7 @@ struct FlightView: View {
         let pass = session.pass
         let arrived = session.hasArrived(at: now)
 
-        return VStack(alignment: .leading, spacing: Theme.Spacing.l) {
+        return VStack(alignment: .leading, spacing: Theme.Spacing.m) {
             HStack {
                 Text("\(pass.flightNumber) · \(pass.origin.iata)–\(pass.destination.iata)")
                     .font(.caption.monospaced().weight(.bold))
@@ -60,11 +60,13 @@ struct FlightView: View {
                 statusPill(arrived: arrived)
             }
 
-            RouteProgressView(origin: pass.origin.iata,
-                              destination: pass.destination.iata,
-                              progress: session.progress(at: now),
-                              isHolding: model.isHolding)
-                .padding(.vertical, Theme.Spacing.m)
+            FlightMapView(origin: pass.origin,
+                          destination: pass.destination,
+                          position: session.position(at: now),
+                          heading: session.heading(at: now),
+                          isHolding: model.isHolding)
+                // The top ~40% of the screen (CLAUDE.md: cockpit layout, self view off).
+                .containerRelativeFrame(.vertical) { height, _ in height * 0.4 }
 
             Spacer(minLength: 0)
 

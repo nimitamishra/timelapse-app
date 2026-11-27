@@ -58,6 +58,23 @@ nonisolated enum GreatCircle {
             longitude: atan2(y, x).degrees
         )
     }
+
+    /// The compass direction to set off in, to fly the great circle from `a`
+    /// to `b`: 0° = north, 90° = east, 180° = south, 270° = west.
+    ///
+    /// "Initial" because on a great circle the heading keeps changing — leaving
+    /// New York for London you start out pointing northeast and arrive pointing
+    /// southeast. So the map asks again every second from wherever the plane is.
+    static func initialBearing(from a: Coordinate, to b: Coordinate) -> Double {
+        let lat1 = a.latitude.radians
+        let lat2 = b.latitude.radians
+        let dLon = (b.longitude - a.longitude).radians
+        // East–west part and north–south part of the direction, then the angle between them.
+        let east = sin(dLon) * cos(lat2)
+        let north = cos(lat1) * sin(lat2) - sin(lat1) * cos(lat2) * cos(dLon)
+        let degrees = atan2(east, north).degrees
+        return (degrees + 360).truncatingRemainder(dividingBy: 360) // -90° → 270°
+    }
 }
 
 // Trig functions work in radians (a full circle = 2π); coordinates are in degrees (360).
