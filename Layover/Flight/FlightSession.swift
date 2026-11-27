@@ -96,6 +96,16 @@ nonisolated struct FlightSession: Sendable {
                                       fraction: progress(at: now))
     }
 
+    /// Which way the plane's nose points (0° = north), for the map icon.
+    /// Measured from just short of the destination once arrived, because
+    /// "the direction from Bogotá to Bogotá" has no answer.
+    func heading(at now: Date) -> Double {
+        let from = GreatCircle.intermediatePoint(from: pass.origin.coordinate,
+                                                 to: pass.destination.coordinate,
+                                                 fraction: min(progress(at: now), 0.999))
+        return GreatCircle.initialBearing(from: from, to: pass.destination.coordinate)
+    }
+
     /// Postcards earned so far on a layover.
     func postcards(at now: Date) -> Int {
         Int(overtime(at: now) / LandingRules.postcardInterval)
