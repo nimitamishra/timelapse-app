@@ -7,6 +7,7 @@ struct LayoverApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .tint(Theme.Colors.amber) // back buttons, links, cursors
         }
     }
 }

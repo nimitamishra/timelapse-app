@@ -17,7 +17,9 @@ A flight and travel inspired timelapse study focus application.
 - Layover: going over the estimate → land on time, then explore the city — one postcard every 15 min of overtime
 - Real mode: 800 km/hour (~13.3 km per focus minute) · Compressed: 10× real (~133 km per focus minute)
 - Pausing (holding pattern): no limit
-- Destination suggestions: favor famous / large airports over obscure ones (to build in milestone 3)
+- Destination suggestions: favor famous airports from `Layover/Resources/featured_airports.json` (editable list of codes) when their flight time is close to the estimate; fall back to any large airport otherwise
+- Home airport: ask for location permission once and offer the nearest few airports to choose from (e.g. SJC vs SFO from Palo Alto); searching for any other airport is always available
+- Estimate input: quick chips (25m, 45m, 1h, 2h) plus a Custom picker
 - Airport data: OurAirports (public domain), filtered by `scripts/build_airports.py` into `Layover/Resources/airports.json`
 
 ## Style

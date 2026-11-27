@@ -20,6 +20,12 @@ enum Theme {
         static let amber         = Color(hex: 0xFFB547) // accent: route, primary buttons
         static let green         = Color(hex: 0x6EE7A8) // good news: boarding, tailwind
         static let recording     = Color(hex: 0xFF6B5E) // the REC dot
+
+        // The boarding pass is a light paper ticket on the dark screen.
+        static let ticketPaper       = Color(hex: 0xE6EDF7)
+        static let ticketInk         = Color(hex: 0x0B1220)
+        static let ticketInkMuted    = Color(hex: 0x4A5568)
+        static let ticketPerforation = Color(hex: 0x9AA6B8)
     }
 
     // MARK: Fonts — SF Pro for text, SF Mono for flight data

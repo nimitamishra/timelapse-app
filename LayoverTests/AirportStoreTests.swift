@@ -29,6 +29,36 @@ struct AirportStoreTests {
         #expect(store.airport(code: "jfk")?.iata == "JFK")
     }
 
+    @Test func everyFeaturedCodeExistsInTheData() {
+        #expect(store.featuredCodes.count > 100)
+        for code in store.featuredCodes {
+            #expect(store.airport(code: code) != nil, "\(code) is featured but not in airports.json")
+        }
+    }
+
+    // The Palo Alto case from CLAUDE.md: SJC and SFO are both close, so both are offered.
+    @Test func nearestToPaloAltoOffersSjcSfoAndOak() {
+        let paloAlto = Coordinate(latitude: 37.4419, longitude: -122.1430)
+        let codes = store.nearest(to: paloAlto, limit: 3).map(\.airport.iata)
+        #expect(codes == ["SJC", "SFO", "OAK"])
+    }
+
+    @Test func searchByExactCodeComesFirst() {
+        #expect(store.search("sfo").first?.iata == "SFO")
+    }
+
+    @Test func searchByCityPrefix() {
+        #expect(store.search("san fr").first?.iata == "SFO")
+    }
+
+    @Test func searchByAirportName() {
+        #expect(store.search("kennedy").contains { $0.iata == "JFK" })
+    }
+
+    @Test func emptySearchReturnsNothing() {
+        #expect(store.search("   ").isEmpty)
+    }
+
     @Test func everyCoordinateIsOnEarth() {
         for airport in store.airports {
             #expect((-90...90).contains(airport.lat), "\(airport.iata) latitude")
