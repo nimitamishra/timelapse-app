@@ -17,6 +17,11 @@ A flight and travel inspired timelapse study focus application.
 - Layover: going over the estimate → land on time, then explore the city — one postcard every 15 min of overtime
 - Real mode: 800 km/hour (~13.3 km per focus minute) · Compressed: 10× real (~133 km per focus minute)
 - Pausing (holding pattern): no limit
+- Landing time: the plane lands exactly at your estimate (its speed is nudged slightly to match); all % rules are measured against the estimate
+- Leaving the app mid-flight (switching apps, locking the phone) automatically enters a holding pattern; you tap Resume to continue
+- Returned to gate: ending a flight under 5 minutes logs no flight
+- Diverted airport: the airport nearest the plane's current position (not the origin or destination city)
+- Postcards: counted for now ("2 postcards from Bogotá"); real landmark postcards are a later feature
 - Destination suggestions: favor famous airports from `Layover/Resources/featured_airports.json` (editable list of codes) when their flight time is close to the estimate; fall back to any large airport otherwise
 - Home airport: ask for location permission once and offer the nearest few airports to choose from (e.g. SJC vs SFO from Palo Alto); searching for any other airport is always available
 - Estimate input: quick chips (25m, 45m, 1h, 2h) plus a Custom picker
