@@ -20,4 +20,13 @@ struct FlightTimeFormatTests {
     func clockFormat(seconds: Double, expected: String) {
         #expect(FlightTimeFormat.clock(seconds) == expected)
     }
+
+    @Test(arguments: [
+        (0.0, "00:00"),
+        (1_660.0, "27:40"),
+        (3_725.0, "1:02:05"),
+    ])
+    func stopwatchFormat(seconds: Double, expected: String) {
+        #expect(FlightTimeFormat.stopwatch(seconds) == expected)
+    }
 }

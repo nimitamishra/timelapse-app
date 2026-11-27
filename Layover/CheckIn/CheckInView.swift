@@ -34,7 +34,7 @@ struct CheckInView: View {
         .safeAreaInset(edge: .bottom) { boardButton }
         .toolbar(.hidden, for: .navigationBar)
         .navigationDestination(item: $boarded) { pass in
-            InFlightPlaceholderView(pass: pass)
+            FlightView(pass: pass, airports: model.store.airports)
         }
         .sheet(isPresented: $showingHomePicker) {
             HomeAirportPicker(store: model.store, currentCode: model.home.iata) { airport in
